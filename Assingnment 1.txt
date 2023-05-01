@@ -1,0 +1,307 @@
+                            
+ 
+1.Write a blog on Difference between HTTP1.1 vs HTTP2
+ 
+
+HTTP stands for Hypertext Transfer Protocol. It is used in client-server communication. 
+     
+By using HTTP user sends the request to the server & the server sends the response to the user. 
+There are several stages of development of HTTP but we will focus mainly on HTTP 1.1 which was created in 1997 & the new one is HTTP 2        which was created in 2015.
+
+
+HTTP1.1 
+   
+HTTP 1.1 is the latest version of Hypertext Transfer Protocol (HTTP), the World Wide Web application protocol that runs on top of the
+Internet's TCP/IP suits of protocol. HTTP 1.1 provides faster delivery of Web pages than the original HTTP and reduces Web traffic.
+
+Let’s assume the situation when you make a request to the server for the gostyle.html page & server responds to you as a resource gostyle.html page. 
+
+Before sending the request and the response there is a TCP connection established between client & server. Again you make a request to the server for image img.jpg & the server gives a response as an image img.jpg. The connection was not lost here after the first request because we add a keep-alive header which is the part of the request so there is an open connection between the server & client. So there is a persistent connection which means several requests & responses are merged in a single connection. 
+
+The first problem is HTTP 1.1 transfer all the requests & responses in the plain text message form. The second one is head of line blocking in which TCP connection is blocked all other requests until the response does not receive. All the information related to the header file is repeated in every request.These are the drawbacks that lead to the creation of HTTP2. 
+
+HTTP 2: 
+
+HTTP 2 was developed over the SPDY protocol. SPDY (pronounced: SPeeDY) is an open networking protocol whose goal is to speed up the web. It was initially developed at Google for transporting web content.
+ 
+SPDY is an obsolete open-specification communication protocol developed for transporting web content. SPDY became the basis for HTTP 2 specification. 
+
+However, HTTP 2 diverged from SPDY and eventually HTTP 2 subsumed all usecases of SPDY. After HTTP 2 was ratified as a standard, major implementers, including Google, Mozilla, and Apple, deprecated SPDY in favor of HTTP 2. Since 2021, no modern browser supports SPDY.
+
+
+Here's the difference between both the version and that is that HTTP1.1 works on the textual format whereas HTTP 2 works on the binary framing layer that converts all the messages in binary format. 
+
+As mentioned above in HTTP 1.1 there is head of line blocking that blocks all the requests behind it until it doesn’t get its all resources.It uses requests resource Inlining for use getting multiple pages. Also it compresses data by itself.
+
+On other hand HTTP 2 works on fully multiplexed that is one TCP connection is used for multiple requests. Which means it is able to use a single TCP connection to send multiple streams of data at once so that no one resource blocks any other resource. HTTP 2 does this by splitting data into binary-code messages and numbering these messages so that the client knows which stream each binary message belongs to.
+
+Another thing is that HTTP 2 uses PUSH frame by server that collects all multiple pages. 
+
+Typically, a server only serves content to a client device if the client asks for it. However, this approach is not always practical for modern webpages, which often involve several dozen separate resources that the client must request. 
+
+So HTTP 2 solves this problem by allowing a server to "push" content to a client before the client asks for it. The server sends all the other files like CSS & JS without the request of the client using the PUSH frame. 
+It means the server also sends a message letting the client know what pushed content to expect – like if Bob had sent Alice a Table of Contents of his novel before sending the whole thing.
+
+Another advantage of HTTP 2 is that it uses HPACK which is used to split data from header i.e., data compression. It compresses the header. 
+
+As we know small files load more quickly than large ones. To speed up web performance, both HTTP 1.1 and HTTP 2 compress HTTP messages to make them smaller. 
+
+However, HTTP 2 uses a more advanced compression method called HPACK that eliminates redundant information in HTTP header packets. This eliminates a few bytes from every HTTP packet. Given the volume of HTTP packets involved in loading even a single webpage, those bytes add up quickly, resulting in faster loading.
+
+Also, one of the ways in which HTTP 2 is faster is in how it prioritizes content during the loading process. Prioritization refers to the order in which pieces of content are loaded as prioritization affects a webpage's load time.
+
+HTTP 2 offers a feature called weighted prioritization. This allows developers to decide which page resources will load first, every time. In HTTP 2, when a client makes a request for a webpage, the server sends several streams of data to the client at once, instead of sending one thing after another. This method of data delivery is known as multiplexing. Developers can assign each of these data streams a different weighted value, and the value tells the client which data stream to render first.
+
+
+
+
+2.Write a blog about objects and its internal representation in Javascript.
+
+OBJECTS:
+
+In JavaScript, Objects is most important data-type and forms the building blocks for modern JavaScript. 
+These objects are quite different from JavaScript’s primitive data-types(such as Number, String, Boolean, null, undefined and symbol) in the sense that while these primitive data-types all store a single value each (depending on their types).
+
+That means Primitive data types contain one value but Objects can hold many values in form of Key: value pair. These keys can be variables or functions and are called properties and methods, respectively, in the context of an object.
+
+Simply we can say Objects in JavaScript may be defined as an unordered collection of related data, of primitive or reference types, in the form of “key: value” pairs. These keys can be variables or functions and are called properties and methods in terms of an object.
+
+That is, Object in a JavaScript  is a collection of named values having state and behavior (properties and method)”.  An object is a standalone entity, with properties and type.
+
+Eg:
+
+ Person, car, pen, bike, Personal Computer , Washing Machine etc. Take the case of cars. All cars have the same properties, but the property values differ from car to car.  Another example is  a cup is an object, with properties. A cup has a color, a design, weight, a material it is made of, etc.,  and methods like updateDesign, updateWeight, etc.
+
+
+Also an object, is a reference data type. Variables that are assigned a reference value are given a reference or a pointer to that value. That reference or pointer points to the location in memory where the object is stored. The variables don’t actually store the value.
+
+Objects are more complex and each object may contain any combination of these primitive data-types as well as reference data-types.
+
+===> OBJECTS AND ITS PROPERTIES <===
+
+Every object has some property associated with some value. A property of an object can be explained as a variable that is attached to the object. 
+Object properties are basically the same as ordinary JavaScript variables, except for the attachment to objects. 
+
+The properties of an object define the characteristics of the object. You access the properties of an object with a simple dot-notation:
+
+                                                              objectName.propertyName
+
+
+Both the "object name (which could be a normal variable)" and "property name" are case sensitive like all JavaScript variables. You can define a property by assigning it a value. For example, let’s create an object named myCup and give it properties named make, model, and year as follows:
+
+var myCup = new Object();
+myCup.make = 'Glass';
+myCup.model = 'Cylinderical';
+myCup.year = 2008;
+
+Unassigned properties of an object are undefined (and not null).
+
+                                                                myCup.color; // undefined
+
+These values can be accessed using these properties associated with them.
+
+var myCup = new Object();
+
+myCup.make = 'Glass cup';
+
+
+Objects are sometimes called associative arrays, since each property is associated with a string value that can be used to access it.  For example, you could access the properties of the myCup object as follows:
+
+myCup['make'] = 'Glass';
+myCup['model'] = 'Cylinderical';
+myCup['year'] = 2008;
+
+After creating myCup object, the value inside the object can be accessed using keys.
+
+i.e.
+
+myCup.year
+
+Output: 2008
+
+These values can be accessed using brackets notation also.
+
+myCup[year]
+
+Output: 2008
+
+
+Syntax for adding a property to an object:
+                                                                                ObjectName.ObjectProperty = propertyValue;
+
+Syntax for deleting a property from an object:
+                                                                                  delete ObjectName.ObjectProperty;
+
+Syntax to access a property from an object is:
+                                                                                       objectName.property        
+                                                                                                 //or
+                                                                                       objectName["property”]     
+                                                                                                 //or
+                                                                                       objectName[expression]   
+
+In conclusion and simple definition for Java Script properties is “Properties are the values associated with a JavaScript object”.
+
+
+
+An object property name can be any valid JavaScript string, or anything that can be converted to a string, including the empty string. 
+However, any property name that is not a valid JavaScript identifier (for example, a property name that has a space or a hyphen, or that starts with a number) can only be accessed using the square bracket notation. 
+This notation is also very useful when property names are to be dynamically determined (when the property name is not determined until runtime). 
+
+Eg:
+
+1.four variables are created and assigned in a single go, 
+2.separated by commas
+
+var myObj = new Object(),
+             str = 'myString',
+          rand = Math.random(),
+            obj = new Object();
+
+myObj.type                  = 'Dot syntax';
+myObj['date created']   = 'String with space';
+myObj[str]                    = 'String value';
+myObj[rand]                = 'Random Number';
+myObj[obj]                  = 'Object';
+myObj['']                      = 'Even an empty string';console.log(myObj);
+
+You can also access properties by using a string value that is stored in a variable:
+
+var propertyName = 'make';
+myCup[propertyName] = 'Glass';
+propertyName = 'model';
+myCup[propertyName] = 'Cylinderical';
+
+Also,You can use the bracket notation with "for...in" to iterate over all the enumerable properties of an object. To understand it better , the following function displays the properties of the object when you pass the object and the object's name as arguments to the function:
+
+function showProps(obj, objName) {
+  var result = ``;
+  for (var i in obj) {
+
+    // obj.hasOwnProperty() is used to filter out properties from the object's prototype chain
+   
+ if (obj.hasOwnProperty(i)) {
+      result += `${objName}.${i} = ${obj[i]}\n`;
+    }
+  }
+  return result;
+}
+
+So, the function call showProps(myCup, "myCup") would return the following:
+
+myCup.make = Glass
+myCup.model = Cylinderical
+myCup.year = 2008
+
+
+CREATING OBJECTS IN JAVASCRIPT:
+
+=> Create JavaScript Object with Object Literal.
+
+Easiest way to create a javascript object is object literal, simply define the property and values inside curly braces as shown below
+
+                                let bike = {name: 'MountainBike', Brand:'SalsaCycle', Year:'1994'};
+
+
+=> Create JavaScript Object with Constructor.
+
+Constructor is nothing but a function and with help of new keyword, constructor function allows to create multiple objects of same flavor.
+
+ Eg:
+
+function Vehicle(name, brand) {
+   this.name = name;
+   this.brand = brand;
+}
+let car1 = new Vehicle(’Fiesta’, 'Ford’);
+let car2 = new Vehicle(’Santa Fe’, 'Hyundai’)
+console.log(car1.name);    //Output: Fiesta
+console.log(car2.name);    //Output: Santa Fe
+
+
+=> Using the JavaScript Keyword "new".
+
+The following example also creates a new JavaScript object with four properties:
+
+Eg:
+
+var person = new Object();
+person.firstName = “lily”;
+person.lastName = “rose”;
+person.age = 20;
+person.eyeColor = “blue”;
+
+
+=> Using the Object.create method.
+
+Objects can also be created using the Object.create() method. This method can be very useful as it allows you to choose the prototype object for the object you want to create, without having to define a constructor function.
+
+Eg: Let's take Animals and its properties
+
+
+var Animal = {
+  type: 'Invertebrates',              // Default value of properties
+  displayType: function() {     // Method which will display type of Animal
+    console.log(this.type);
+  }
+};
+
+// Create new animal type called animal1 
+var animal1 = Object.create(Animal);
+animal1.displayType();                              // Output:Invertebrates
+// Create new animal type called Fishes
+var lion = Object.create(Animal);
+lion.type = 'Lion';
+lion.displayType(); 
+// Output:lion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
